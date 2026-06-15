@@ -1,0 +1,60 @@
+{
+  "name": "Take & Brainrot",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "MainGame": {
+        "$path": "src/ServerScriptService/MainGame.server.lua"
+      },
+      "AdminSystem": {
+        "$path": "src/ServerScriptService/AdminSystem.server.lua"
+      },
+      "ConveyorSystem": {
+        "$path": "src/ServerScriptService/ConveyorSystem.server.lua"
+      },
+      "EventsSystem": {
+        "$path": "src/ServerScriptService/EventsSystem.server.lua"
+      },
+      "AdminAbuse": {
+        "$path": "src/ServerScriptService/AdminAbuse.server.lua"
+      }
+    },
+    "ReplicatedStorage": {
+      "$className": "ReplicatedStorage",
+      "AdminConfig": {
+        "$path": "src/ReplicatedStorage/AdminConfig.lua"
+      },
+      "GameConfig": {
+        "$path": "src/ReplicatedStorage/GameConfig.lua"
+      },
+      "RemoteEvents": {
+        "$className": "Folder"
+      }
+    },
+    "StarterGui": {
+      "$className": "StarterGui",
+      "AdminPanel": {
+        "$path": "src/StarterGui/AdminPanel/AdminPanel.lua"
+      },
+      "EventsGui": {
+        "$path": "src/StarterGui/EventsGui/EventsGui.lua"
+      }
+    },
+    "StarterPlayer": {
+      "$className": "StarterPlayer",
+      "StarterPlayerScripts": {
+        "$className": "StarterPlayerScripts",
+        "LocalAdmin": {
+          "$path": "src/StarterPlayer/StarterPlayerScripts/LocalAdmin.client.lua"
+        }
+      }
+    },
+    "Workspace": {
+      "$className": "Workspace",
+      "$properties": {
+        "Name": "Take & Brainrot"
+      }
+    }
+  }
+}
