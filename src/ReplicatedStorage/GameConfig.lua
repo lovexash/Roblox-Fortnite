@@ -1,58 +1,73 @@
--- Take & Brainrot | GameConfig
--- Central configuration for the entire game
+-- Aura RNG | GameConfig
+-- Central, tunable configuration for the whole game.
 
 local GameConfig = {}
 
-GameConfig.GAME_NAME = "Take & Brainrot"
+GameConfig.GAME_NAME = "Aura RNG"
 GameConfig.VERSION = "1.0.0"
 
--- Conveyor Settings
-GameConfig.Conveyor = {
-    Speed = 16,              -- studs per second
-    EggSpawnInterval = 3,    -- seconds between egg spawns
-    EggTypes = {
-        { name = "Normal Egg",      color = Color3.fromRGB(255, 255, 200), weight = 50, value = 10  },
-        { name = "Golden Egg",      color = Color3.fromRGB(255, 200, 0),   weight = 20, value = 50  },
-        { name = "Rainbow Egg",     color = Color3.fromRGB(200, 0, 255),   weight = 10, value = 100 },
-        { name = "Brainrot Egg",    color = Color3.fromRGB(0, 255, 100),   weight = 15, value = 75  },
-        { name = "Diamond Egg",     color = Color3.fromRGB(100, 220, 255), weight = 5,  value = 500 },
-    },
-    MaxEggsOnBelt = 12,
+-- ── Rolling ──────────────────────────────────────────────────────────────────
+GameConfig.Roll = {
+	BaseCooldown = 1.0,    -- seconds between manual rolls at base
+	FastCooldown = 0.35,   -- cooldown when the Fast Roll gamepass is owned
+	BaseLuck = 1,          -- everyone starts with luck 1 (one draw per roll)
+	RollRevealTime = 1.6,  -- how long the reveal animation plays on the client
+	-- Coins awarded per roll = aura.value (see AuraData). A small floor keeps
+	-- early rolls rewarding.
+	MinCoinsPerRoll = 5,
 }
 
--- Events Settings
-GameConfig.Events = {
-    CooldownTime = 120,   -- seconds between events
-    Duration = {
-        MeteorShower = 30,
-        Flood        = 45,
-        Earthquake   = 20,
-        FogOfBrainrot = 60,
-        EggRain      = 40,
-        GravityFlip  = 35,
-        SpeedBoost   = 30,
-    },
-}
-
--- Admin Settings
-GameConfig.Admin = {
-    -- Add Roblox UserIds of admins here
-    Admins = {
-        0,            -- placeholder: replace with real UserId
-    },
-    -- Owners have all powers
-    Owners = {
-        0,            -- placeholder: replace with real UserId
-    },
-    CommandPrefix = "!",
-    AbuseLogEnabled = true,
-}
-
--- Points & Economy
+-- ── Economy ──────────────────────────────────────────────────────────────────
 GameConfig.Economy = {
-    PickupEggBonus = 5,
-    EventParticipationBonus = 25,
-    DailyLoginBonus = 100,
+	StartingCoins = 100,
+	-- Coins gained when an aura is deleted/sold from the inventory equals
+	-- aura.value * this multiplier.
+	SellMultiplier = 1.0,
+	DailyBonus = 500,
+}
+
+-- ── Luck / potions ───────────────────────────────────────────────────────────
+GameConfig.Potions = {
+	MaxStackedLuck = 5000,  -- absolute luck ceiling after all multipliers
+}
+
+-- ── Trading ──────────────────────────────────────────────────────────────────
+GameConfig.Trade = {
+	MaxRange = 30,          -- studs; players must be near each other to trade
+	MaxItemsPerSide = 6,    -- auras offered per side
+	ConfirmCountdown = 3,   -- seconds both must stay confirmed before completing
+}
+
+-- ── Gamepasses & Developer Products (replace ids with your own) ──────────────
+-- These ids are placeholders. Create the passes/products in the Roblox
+-- Creator Dashboard and paste their ids here.
+GameConfig.Monetization = {
+	Gamepasses = {
+		FastRoll    = { id = 0, name = "⚡ Fast Roll",     luck = 0,  desc = "Roll 3x faster." },
+		LuckII      = { id = 0, name = "🍀 Lucky II",      luck = 10, desc = "+10 permanent luck." },
+		AutoRoll    = { id = 0, name = "🔁 Auto Roll",     luck = 0,  desc = "Hands-free auto rolling." },
+		VIP         = { id = 0, name = "👑 VIP",           luck = 5,  desc = "+5 luck, VIP tag, 2x coins." },
+	},
+	-- Developer products grant coins or capsules on purchase.
+	Products = {
+		Coins10k    = { id = 0, name = "10,000 Coins",  coins = 10000 },
+		Coins100k   = { id = 0, name = "100,000 Coins", coins = 100000 },
+		-- Capsule products are keyed by capsule id in CapsuleData.
+	},
+}
+
+-- ── Admin (for granting coins / testing) ─────────────────────────────────────
+GameConfig.Admins = {
+	-- Add your Roblox UserId here to unlock /give and test commands.
+	0,
+}
+
+-- ── DataStore ────────────────────────────────────────────────────────────────
+GameConfig.DataStore = {
+	PlayerKey = "AuraRNG_Player_v1",
+	GlobalKey = "AuraRNG_Global_v1",   -- stores "how many of each aura exist"
+	AutoSaveInterval = 90,
+	GlobalSaveInterval = 30,
 }
 
 return GameConfig

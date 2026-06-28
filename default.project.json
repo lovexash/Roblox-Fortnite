@@ -1,59 +1,37 @@
 {
-  "name": "Take & Brainrot",
+  "name": "Aura RNG",
   "tree": {
     "$className": "DataModel",
-    "ServerScriptService": {
-      "$className": "ServerScriptService",
-      "MainGame": {
-        "$path": "src/ServerScriptService/MainGame.server.lua"
-      },
-      "AdminSystem": {
-        "$path": "src/ServerScriptService/AdminSystem.server.lua"
-      },
-      "ConveyorSystem": {
-        "$path": "src/ServerScriptService/ConveyorSystem.server.lua"
-      },
-      "EventsSystem": {
-        "$path": "src/ServerScriptService/EventsSystem.server.lua"
-      },
-      "AdminAbuse": {
-        "$path": "src/ServerScriptService/AdminAbuse.server.lua"
-      }
-    },
     "ReplicatedStorage": {
       "$className": "ReplicatedStorage",
-      "AdminConfig": {
-        "$path": "src/ReplicatedStorage/AdminConfig.lua"
-      },
-      "GameConfig": {
-        "$path": "src/ReplicatedStorage/GameConfig.lua"
-      },
-      "RemoteEvents": {
-        "$className": "Folder"
-      }
+      "GameConfig":  { "$path": "src/ReplicatedStorage/GameConfig.lua" },
+      "AuraData":    { "$path": "src/ReplicatedStorage/AuraData.lua" },
+      "CapsuleData": { "$path": "src/ReplicatedStorage/CapsuleData.lua" },
+      "ShopData":    { "$path": "src/ReplicatedStorage/ShopData.lua" },
+      "Util":        { "$path": "src/ReplicatedStorage/Util.lua" },
+      "Remotes":     { "$path": "src/ReplicatedStorage/Remotes.lua" }
     },
-    "StarterGui": {
-      "$className": "StarterGui",
-      "AdminPanel": {
-        "$path": "src/StarterGui/AdminPanel/AdminPanel.lua"
-      },
-      "EventsGui": {
-        "$path": "src/StarterGui/EventsGui/EventsGui.lua"
-      }
+    "ServerScriptService": {
+      "$className": "ServerScriptService",
+      "Core":        { "$path": "src/ServerScriptService/Core.lua" },
+      "MainServer":  { "$path": "src/ServerScriptService/MainServer.server.lua" },
+      "RollSystem":  { "$path": "src/ServerScriptService/RollSystem.server.lua" },
+      "ShopSystem":  { "$path": "src/ServerScriptService/ShopSystem.server.lua" },
+      "TradeSystem": { "$path": "src/ServerScriptService/TradeSystem.server.lua" },
+      "MapBuilder":  { "$path": "src/ServerScriptService/MapBuilder.server.lua" }
     },
     "StarterPlayer": {
       "$className": "StarterPlayer",
       "StarterPlayerScripts": {
         "$className": "StarterPlayerScripts",
-        "LocalAdmin": {
-          "$path": "src/StarterPlayer/StarterPlayerScripts/LocalAdmin.client.lua"
-        }
+        "Client": { "$path": "src/StarterPlayer/StarterPlayerScripts/Client.client.lua" },
+        "UI":     { "$path": "src/StarterPlayer/StarterPlayerScripts/UI" }
       }
     },
     "Workspace": {
       "$className": "Workspace",
       "$properties": {
-        "Name": "Take & Brainrot"
+        "Name": "Aura RNG"
       }
     }
   }
